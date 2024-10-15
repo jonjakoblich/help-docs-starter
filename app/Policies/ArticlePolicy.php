@@ -20,9 +20,9 @@ class ArticlePolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Article $article): bool
+    public function view(User|null $user, Article $article): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -30,7 +30,7 @@ class ArticlePolicy
      */
     public function create(User $user): bool
     {
-        return Auth::check($user);
+        return Auth::check();
     }
 
     /**
@@ -38,7 +38,7 @@ class ArticlePolicy
      */
     public function update(User $user, Article $article): bool
     {
-        //
+        return Auth::check();
     }
 
     /**
@@ -46,22 +46,7 @@ class ArticlePolicy
      */
     public function delete(User $user, Article $article): bool
     {
-        //
+        return Auth::check();
     }
 
-    /**
-     * Determine whether the user can restore the model.
-     */
-    public function restore(User $user, Article $article): bool
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can permanently delete the model.
-     */
-    public function forceDelete(User $user, Article $article): bool
-    {
-        //
-    }
 }
