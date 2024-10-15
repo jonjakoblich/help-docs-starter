@@ -4,7 +4,7 @@ use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Support\Str;
 
-uses()->group('models','article');
+uses()->group('models','category');
 
 beforeEach(function() {
     $this->category = Category::factory()
