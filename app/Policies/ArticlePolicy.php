@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Models\Article;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
+use Illuminate\Support\Facades\Auth;
 
 class ArticlePolicy
 {
@@ -13,7 +14,7 @@ class ArticlePolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -29,7 +30,7 @@ class ArticlePolicy
      */
     public function create(User $user): bool
     {
-        //
+        return Auth::check($user);
     }
 
     /**

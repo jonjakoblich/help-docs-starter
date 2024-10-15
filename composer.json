@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
+    "name": "Help Docs Starter Kit",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
+    "description": "A simple help documentation starter kit site for SaaS apps.",
     "keywords": ["laravel", "framework"],
     "license": "MIT",
     "require": {
