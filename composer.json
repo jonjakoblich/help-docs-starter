@@ -1,5 +1,5 @@
 {
-    "name": "Help Docs Starter Kit",
+    "name": "jonjakoblich/help-docs-starter",
     "type": "project",
     "description": "A simple help documentation starter kit site for SaaS apps.",
     "keywords": ["laravel", "framework"],
@@ -11,6 +11,7 @@
         "laravel/framework": "^11.9",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
+        "spatie/laravel-model-states": "^2.7",
         "tightenco/ziggy": "^2.0"
     },
     "require-dev": {
