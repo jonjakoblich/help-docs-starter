@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignIdFor(User::class, 'author');
             $table->string('slug');
             $table->string('status');
+            $table->tinyInteger('order')->unsigned();
             $table->timestamps();
         });
     }

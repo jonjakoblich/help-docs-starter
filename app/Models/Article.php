@@ -15,6 +15,10 @@ class Article extends Model
     /** @use HasFactory<\Database\Factories\ArticleFactory> */
     use HasFactory, HasStates;
 
+    protected $attributes = [
+        'order' => 10,
+    ];
+
     protected $casts = [
         'status' => ArticleStatus::class,
     ];

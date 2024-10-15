@@ -54,3 +54,10 @@ it('has a status', function () {
 it('has a default status of draft', function () {
     expect($this->article)->status->toBeInstanceOf(Draft::class);
 });
+
+it('has an order property which defaults to 10', function () {
+    expect($this->article)->order
+        ->not->toBeNull()
+        ->toBeNumeric
+        ->toBe(10);
+});
