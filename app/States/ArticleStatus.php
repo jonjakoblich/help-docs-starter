@@ -10,6 +10,7 @@ abstract class ArticleStatus extends State
     public static function config(): StateConfig
     {
         return parent::config()
-            ->default(Draft::class);
+            ->default(Draft::class)
+            ->allowAllTransitions();
     }
 }
