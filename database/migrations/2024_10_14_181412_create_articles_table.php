@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->longText('content');
-            $table->foreignIdFor(User::class, 'author');
+            $table->foreignIdFor(User::class, 'author_id');
             $table->string('slug');
             $table->string('status');
             $table->tinyInteger('order')->unsigned();

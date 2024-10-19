@@ -22,9 +22,16 @@ class Article extends Model
         'status' => ArticleStatus::class,
     ];
 
+    protected $fillable = [
+        'name',
+        'content',
+        'author_id',
+        'slug',
+    ];
+
     public function author(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'author_id');
     }
 
     public function categories(): BelongsToMany
