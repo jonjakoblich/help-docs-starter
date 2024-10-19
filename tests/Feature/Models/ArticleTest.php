@@ -74,7 +74,7 @@ it('can transition from draft to any other status', function () {
         ->canTransitionTo(Published::class)->toBeTrue()
         ->canTransitionTo(Archived::class)->toBeTrue()
         ->canTransitionTo(Hidden::class)->toBeTrue();
-});
+})->skip('Waiting on PR265 in spatie/laravel-model-states');
 
 it('can transition from published to any other status', function () {
     $this->article->status->transitionTo(Published::class);

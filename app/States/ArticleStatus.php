@@ -11,6 +11,7 @@ abstract class ArticleStatus extends State
     {
         return parent::config()
             ->default(Draft::class)
-            ->allowAllTransitions();
+            //->allowAllTransitions()
+            ;
     }
 }
