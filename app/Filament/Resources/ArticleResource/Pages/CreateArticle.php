@@ -46,7 +46,7 @@ class CreateArticle extends CreateRecord
                         Select::make('status')
                             ->options(Article::getStatesFor('status')
                                     ->flatMap(fn(string $state) => 
-                                    [Str::lower(class_basename($state)) => class_basename($state)])
+                                    [Str::lower(class_basename($state)) => Str::ucfirst(class_basename($state))])
                             )
                             ->default(Str::lower(class_basename(Article::getDefaultStateFor('status')))),
                         Select::make('author_id')
