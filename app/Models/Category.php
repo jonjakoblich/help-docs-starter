@@ -18,6 +18,10 @@ class Category extends Model
         'slug',
     ];
 
+    protected $with = [
+        'parent',
+    ];
+
     public function parent(): BelongsTo
     {
         return $this->belongsTo(Category::class);
