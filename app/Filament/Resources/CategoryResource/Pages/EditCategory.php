@@ -4,7 +4,6 @@ namespace App\Filament\Resources\CategoryResource\Pages;
 
 use App\Filament\Resources\CategoryResource;
 use Filament\Actions;
-use Filament\Forms\Form;
 use Filament\Resources\Pages\EditRecord;
 
 class EditCategory extends EditRecord
@@ -16,10 +15,5 @@ class EditCategory extends EditRecord
         return [
             Actions\DeleteAction::make(),
         ];
-    }
-
-    public function form(Form $form): Form
-    {
-        return (new CreateCategory)->form($form);
     }
 }

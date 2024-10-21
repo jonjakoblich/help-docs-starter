@@ -17,13 +17,17 @@ class UserResource extends Resource
 {
     protected static ?string $model = User::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-user';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Section::make('User Details')
+                    ->schema([
+                        Forms\Components\TextInput::make('name'),
+                        Forms\Components\TextInput::make('email'),
+                    ]),
             ]);
     }
 
@@ -31,8 +35,12 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('name')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('email'),
             ])
+            ->searchable('name')
+            ->persistSearchInSession()
             ->filters([
                 //
             ])
