@@ -22,8 +22,8 @@ class ArticleFactory extends Factory
 
         return [
             'name' => $name,
-            'content' => fake()->realText(500000),
-            'author' => User::factory(),
+            'content' => fake()->realText(500),
+            'author_id' => User::factory(),
             'slug' => Str::slug($name),
         ];
     }
