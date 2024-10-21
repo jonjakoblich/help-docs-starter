@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\User;
+use App\States\Published;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -26,5 +27,10 @@ class ArticleFactory extends Factory
             'author_id' => User::factory(),
             'slug' => Str::slug($name),
         ];
+    }
+
+    public function published(): Factory
+    {
+        return $this->state(fn(array $attributes) => ['status' => Published::$name]);
     }
 }
