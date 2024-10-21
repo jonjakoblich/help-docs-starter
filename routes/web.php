@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -28,7 +29,8 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/',HomePageController::class)->name('home');
 
-Route::get('/{article:slug}',ArticleController::class)
-    ->name('article.view');
+Route::get('/article/{article:slug}',ArticleController::class)->name('article.view');
+
+Route::get('/category/{category:slug}',CategoryController::class)->name('category.view');
 
 require __DIR__.'/auth.php';
