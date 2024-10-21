@@ -30,7 +30,7 @@ it('has long form content', function () {
 });
 
 it('has an author', function () {
-    expect($this->article)->author
+    expect($this->article)->author_id
         ->not->toBeNull()
         ->toBeNumeric();
 });
@@ -58,10 +58,10 @@ it('has statuses of draft published hidden and archived', function () {
     $states = Article::getStatesFor('status')->toArray();
 
     expect($states)->toEqualCanonicalizing([
-        'App\States\Draft',
-        'App\States\Published',
-        'App\States\Hidden',
-        'App\States\Archived',
+        'draft',
+        'published',
+        'hidden',
+        'archived',
     ]);
 });
 
