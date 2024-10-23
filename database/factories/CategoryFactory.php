@@ -24,4 +24,11 @@ class CategoryFactory extends Factory
             'slug' => Str::slug($name),
         ];
     }
+
+    public function featured(): self
+    {
+        return $this->state(fn(array $attributes) => [
+            'featured' => true
+        ]);
+    }
 }
