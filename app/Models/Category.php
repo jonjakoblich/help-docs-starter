@@ -22,6 +22,10 @@ class Category extends Model
         'parent',
     ];
 
+    protected $attributes = [
+        'featured' => false,
+    ];
+
     public function parent(): BelongsTo
     {
         return $this->belongsTo(Category::class);

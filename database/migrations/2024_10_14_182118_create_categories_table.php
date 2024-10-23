@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug');
             $table->foreignIdFor(Category::class,'parent_id')->nullable();
+            $table->boolean('featured');
             $table->timestamps();
         });
     }

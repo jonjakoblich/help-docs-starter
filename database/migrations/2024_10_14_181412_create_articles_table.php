@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('slug');
             $table->string('status');
             $table->tinyInteger('order')->unsigned();
+            $table->boolean('featured');
             $table->timestamps();
         });
     }

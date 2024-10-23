@@ -60,3 +60,7 @@ it('can have many articles', function () {
         ->toBeIterable()
         ->each->toBeInstanceOf(Article::class);
 });
+
+it('has a featured property', function () {
+    expect($this->category->featured)->toBeBool();
+});

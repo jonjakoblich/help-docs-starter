@@ -16,6 +16,7 @@ class Article extends Model
 
     protected $attributes = [
         'order' => 10,
+        'featured' => false,
     ];
 
     protected $casts = [

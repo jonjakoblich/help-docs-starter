@@ -109,3 +109,7 @@ it('has an order property which defaults to 10', function () {
         ->toBeNumeric
         ->toBe(10);
 });
+
+it('has a featured property', function () {
+    expect($this->article->featured)->toBeBool();
+});
