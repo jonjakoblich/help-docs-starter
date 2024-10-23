@@ -17,12 +17,18 @@ class HomePageController extends Controller
     {
         $articles = Article::select(['name','slug','order'])
                     ->whereState('status',Published::class)
+                    ->where('featured',true)
                     ->withoutEagerLoads()
                     ->get()
                     ->makeHidden('pivot');
 
-        $categories = Category::select(['name','slug'])->get();
+        $categories = Category::select(['name','slug'])
+                        ->where('featured',true)
+                        ->get();
 
-        return Inertia::render('Home',compact('articles','categories'));
+        return Inertia::render('Home',[
+            'featuredArticles' => $articles,
+            'featuredCategories' => $categories,
+        ]);
     }
 }
