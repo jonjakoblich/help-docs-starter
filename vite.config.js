@@ -8,6 +8,7 @@ export default defineConfig({
             input: 'resources/js/app.ts',
             ssr: 'resources/js/ssr.ts',
             refresh: true,
+            detectTls: 'help-docs-starter.test',
         }),
         vue({
             template: {
