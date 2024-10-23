@@ -1,11 +1,10 @@
 <template>
-    <header class="flex justify-between">
+    <header class="flex justify-between w-1/2 mx-auto place-items-center py-1">
         <div>
-            <!-- Company logo -->
+             <ApplicationLogo class="size-12" />
         </div>
         <div>
-            <!-- Link back to product homepage -->
-             <Link href="#">{{productHomeName ?? 'Product homepage'}}</Link>
+            <ProductHomeLink />
         </div>
     </header>
     <div class="flex flex-col place-items-center bg-indigo-600 w-full py-6">
@@ -34,6 +33,8 @@
 </template>
 
 <script setup lang="ts">
+import ApplicationLogo from '@/Components/ApplicationLogo.vue';
+import ProductHomeLink from '@/Components/ProductHomeLink.vue';
 import { Link, useForm } from '@inertiajs/vue3';
 
 interface Category {
@@ -49,8 +50,6 @@ interface Article {
 defineProps({
     featuredCategories: Array<Category>,
     featuredArticles: Array<Article>,
-    productHomeUrl: String,
-    productHomeName: String,
 })
 
 const searchForm = useForm({
