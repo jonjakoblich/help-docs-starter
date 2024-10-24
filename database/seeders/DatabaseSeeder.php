@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
 
-        Category::factory()
+        $categories = Category::factory()
             ->count(3)
             ->featured()
             ->create();
@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
             ->sequence(
                 fn(Sequence $sequence) => ['order' => $sequence->index * 10]
             )
+            ->hasAttached($categories->random(rand(1,2)))
             ->hasVotes(rand(5,20))
             ->published()
             ->create();
@@ -42,6 +43,7 @@ class DatabaseSeeder extends Seeder
             ->sequence(
                 fn(Sequence $sequence) => ['order' => $sequence->index * 11]
             )
+            ->hasAttached($categories->random(rand(1,2)))
             ->hasVotes(rand(5,20))
             ->published()
             ->featured()
