@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\ArticleSearchController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\ProfileController;
@@ -27,10 +28,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/',HomePageController::class)->name('home');
+Route::get('/', HomePageController::class)->name('home');
 
-Route::get('/article/{article:slug}',ArticleController::class)->name('article.view');
+Route::get('/article/{article:slug}', ArticleController::class)->name('article.view');
 
-Route::get('/category/{category:slug}',CategoryController::class)->name('category.view');
+Route::get('/category/{category:slug}', CategoryController::class)->name('category.view');
+
+Route::post('/search', ArticleSearchController::class)->name('search.retrieve');
 
 require __DIR__.'/auth.php';
