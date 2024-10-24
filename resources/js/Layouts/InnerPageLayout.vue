@@ -2,7 +2,7 @@
     <MainLayout>
         <PageHeader />
         <div class="flex h-full">
-            <div class="w-1/4 h-full bg-gray-100 text-gray-800 p-2">
+            <div class="w-1/4 bg-gray-100 text-gray-800 p-8">
                 <!-- Left column with navigation to pages -->
                  <slot name="navigation"></slot>
             </div>

@@ -1,7 +1,9 @@
 <template>
     <InnerPageLayout>
         <template #navigation>
-            abc123
+            <div>
+                abc123
+            </div>
         </template>
         <template #content>
             <article class="prose max-w-full">

@@ -10,8 +10,8 @@
         </div>
         <div class="grid grid-cols-3 gap-2 m-2 ">
             <!-- Featured Categories -->
-            <Link v-for="category in featuredCategories"  :href="route('category.view',category.slug)">
-                <p class="border-indigo-500 border-2 rounded-md text-center text-indigo-500 text-xl p-4 hover:text-indigo-700 hover:border-indigo-700">
+            <Link v-for="category in featuredCategories"  :href="route('category.view',category.slug)" class="hover:cursor-pointer">
+                <p class="border-indigo-400 border-2 rounded-md text-center text-indigo-500 text-xl p-4 hover:text-indigo-700 hover:border-indigo-700">
                     {{ category.name }}
                 </p>
             </Link>
