@@ -11,6 +11,7 @@ export interface Category {
     name: string;
     slug: string;
     featured?: boolean;
+    articles?: Array<Article>;
 }
 
 export interface Article {
