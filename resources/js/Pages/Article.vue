@@ -8,6 +8,16 @@
                 <h1>{{ article.name }}</h1>
                 <div v-html="article.content"></div>
             </article>
+            <footer class="flex justify-between">
+                <div v-if="previous != null">
+                    <p class="font-bold">Previous article</p>
+                    <p><Link :href="route('article.view',previous.slug)"></Link></p>
+                </div>
+                <div v-if="next != null">
+                    <p class="font-bold">Next article</p>
+                    <p><Link :href="route('article.view',next.slug)"></Link></p>
+                </div>
+            </footer>
         </template>
     </InnerPageLayout>
 </template>
@@ -21,6 +31,8 @@ import { Article } from '@/types';
 interface Props {
     article: Article;
     navigation: Array<Article>;
+    previous: Article;
+    next: Article;
 }
 
 defineProps<Props>()
