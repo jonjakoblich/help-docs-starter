@@ -21,6 +21,12 @@ export interface Article {
     featured?: boolean;    
 }
 
+export interface HelpfulMetrics {
+    foundHelpful: number;
+    totalVotes: number;
+    articleSlug: string;
+}
+
 export type PageProps<
     T extends Record<string, unknown> = Record<string, unknown>,
 > = T & {
