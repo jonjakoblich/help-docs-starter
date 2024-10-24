@@ -7,6 +7,7 @@ use App\States\ArticleStatus;
 use App\States\Draft;
 use App\States\Hidden;
 use App\States\Published;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 uses()->group('models','article');
@@ -112,4 +113,35 @@ it('has an order property which defaults to 10', function () {
 
 it('has a featured property', function () {
     expect($this->article->featured)->toBeBool();
+});
+
+it('has global scope to sort by order', function () {
+    DB::table('articles')->truncate();
+    
+    Article::factory()
+        ->count(3)
+        ->sequence(
+            [
+                'name' => 'Article A',
+                'order' => 30,
+            ],
+            [
+                'name' => 'Article B',
+                'order' => 10,
+            ],
+            [
+                'name' => 'Article C',
+                'order' => 20,
+            ],
+        )
+        ->create();
+
+    $articles = Article::get()->take(3);
+
+    expect($articles->pluck('name')->toArray())
+            ->toEqual([
+                'Article B',
+                'Article C',
+                'Article A',
+            ]);
 });
