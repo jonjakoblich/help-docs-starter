@@ -15,6 +15,7 @@ class ArticleController extends Controller
         $navigation = $this->getNavigationItems();
 
         $previous = Article::where('order', '<', $article->order)
+            ->orderByDesc('order')
             ->first();
 
         $next = Article::where('order', '>', $article->order)
