@@ -6,13 +6,13 @@
                 <button class="rounded-md border-2 w-24">No</button>
             </div>
             <p class="text-sm">{{ metrics.foundHelpful }} out of {{ metrics.totalVotes }} people found this helpful</p>
-            <p>Need more help? <Link href="#">Contact us</Link></p>
+            <p>Need more help? <Link href="#" class="text-indigo-500 hover:text-indigo-700">Contact us</Link></p>
         </section>
 </template>
 
 <script setup lang="ts">
 import { HelpfulMetrics } from '@/types';
-import { useForm } from '@inertiajs/vue3';
+import { Link, useForm } from '@inertiajs/vue3';
 
 interface Props {
     metrics: HelpfulMetrics

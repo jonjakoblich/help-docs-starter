@@ -12,6 +12,9 @@
                 }) }}</p>
                 <h1>{{ article.name }}</h1>
                 <div v-html="article.content"></div>
+                <div class="flex gap-1">
+                    <Link v-for="category in article.categories" :href="route('category.view',category.slug)">{{ category.name }}</Link>
+                </div>
             </article>
             <ArticleHelpfulVote :metrics="helpfulMetrics" />
             <footer

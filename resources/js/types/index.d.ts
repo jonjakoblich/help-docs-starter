@@ -18,7 +18,8 @@ export interface Article {
     slug: string;
     content?: string;
     updated_at?: string;
-    featured?: boolean;    
+    featured?: boolean;   
+    categories?: Array<Category>; 
 }
 
 export interface HelpfulMetrics {
