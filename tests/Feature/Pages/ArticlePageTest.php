@@ -14,10 +14,13 @@ it('displays an article', function () {
         ->assertOk()
         ->assertInertia(fn(AssertableInertia $page) => $page
             ->component('Article')
-            ->where('name', $article->name)
-            ->where('content', $article->content)
-            ->has('categories')
-            ->where('updated_at', $article->updated_at->toJSON())
-            ->where('slug', $article->slug)
+            ->has('article', fn(AssertableInertia $page) => $page
+                ->where('name', $article->name)
+                ->where('content', $article->content)
+                ->has('categories')
+                ->where('updated_at', $article->updated_at->toJSON())
+                ->where('slug', $article->slug)
+            )
+            ->has('navigation')
         );
 });
