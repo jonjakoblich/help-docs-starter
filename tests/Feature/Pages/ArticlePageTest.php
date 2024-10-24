@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Article;
+use App\Models\HelpfulVote;
 use Inertia\Testing\AssertableInertia;
 
 use function Pest\Laravel\get;
@@ -8,6 +9,7 @@ use function Pest\Laravel\get;
 it('displays an article', function () {
     $article = Article::factory()
                 ->hasCategories(2)
+                ->hasVotes(4)
                 ->create();
 
     Article::factory()
@@ -41,6 +43,11 @@ it('displays an article', function () {
                 ->where('order',20)
                 ->has('name')
                 ->has('slug')
+            )
+            ->has('helpfulMetrics', fn(AssertableInertia $page) => $page
+                ->where('totalVotes', 4)
+                ->where('foundHelpful', HelpfulVote::where('vote',true)->count())
+                ->where('articleSlug', $article->slug)
             )
         );
 });
