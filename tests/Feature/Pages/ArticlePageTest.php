@@ -10,6 +10,16 @@ it('displays an article', function () {
                 ->hasCategories(2)
                 ->create();
 
+    Article::factory()
+        ->count(3)
+        ->published()
+        ->sequence(
+            ['order' => 5],
+            ['order' => 20],
+            ['order' => 30],
+        )
+        ->create();
+
     get(route('article.view', $article->slug))
         ->assertOk()
         ->assertInertia(fn(AssertableInertia $page) => $page
@@ -21,6 +31,16 @@ it('displays an article', function () {
                 ->where('updated_at', $article->updated_at->toJSON())
                 ->where('slug', $article->slug)
             )
-            ->has('navigation')
+            ->has('navigation',3)
+            ->has('previous', fn(AssertableInertia $page) => $page
+                ->where('order',5)
+                ->has('name')
+                ->has('slug')
+            )
+            ->has('next', fn(AssertableInertia $page) => $page
+                ->where('order',20)
+                ->has('name')
+                ->has('slug')
+            )
         );
 });

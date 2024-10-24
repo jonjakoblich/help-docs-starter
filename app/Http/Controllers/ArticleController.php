@@ -14,6 +14,14 @@ class ArticleController extends Controller
     {
         $navigation = $this->getNavigationItems();
 
+        $previous = Article::where('order', '<', $article->order)
+            ->first()
+            ->only(['name','slug','order']);
+
+        $next = Article::where('order', '>', $article->order)
+            ->first()
+            ->only(['name','slug','order']);
+
         return Inertia::render('Article', [
             'article' => $article->only([
                 'name',
@@ -23,6 +31,8 @@ class ArticleController extends Controller
                 'categories',
             ]),
             'navigation' => $navigation,
+            'previous' => $previous,
+            'next' => $next,
         ]);
     }
 
