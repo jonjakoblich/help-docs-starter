@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
             ->sequence(
                 fn(Sequence $sequence) => ['order' => $sequence->index * 10]
             )
+            ->hasVotes(rand(5,20))
             ->published()
             ->create();
 
@@ -41,6 +42,7 @@ class DatabaseSeeder extends Seeder
             ->sequence(
                 fn(Sequence $sequence) => ['order' => $sequence->index * 11]
             )
+            ->hasVotes(rand(5,20))
             ->published()
             ->featured()
             ->create();

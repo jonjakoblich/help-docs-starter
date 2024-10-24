@@ -2,6 +2,7 @@
 
 use App\Models\Article;
 use App\Models\Category;
+use App\Models\HelpfulVote;
 use App\Models\User;
 use Database\Seeders\DatabaseSeeder;
 
@@ -11,6 +12,7 @@ beforeEach(function(){
     test()->assertDatabaseCount(Article::class, 0);
     test()->assertDatabaseCount(Category::class, 0);
     test()->assertDatabaseCount(User::class, 0);
+    test()->assertDatabaseCount(HelpfulVote::class, 0);
 
     seed(DatabaseSeeder::class);
 });
@@ -40,4 +42,11 @@ it('creates a test user', function () {
         'name' => 'Test User',
         'email' => 'test@example.com',
     ]);
+});
+
+it('casts helpfulness votes on each of the articles', function () {
+    $articles = Article::all();
+
+    expect($articles)
+        ->each->votes->not->toBeEmpty();
 });
