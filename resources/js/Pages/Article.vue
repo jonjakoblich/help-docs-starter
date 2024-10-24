@@ -1,14 +1,12 @@
 <template>
     <InnerPageLayout>
         <template #navigation>
-            <div>
-                abc123
-            </div>
+            <SidebarNavigation :navigation="navigation" />
         </template>
         <template #content>
             <article class="prose max-w-full">
-                <h1>{{ name }}</h1>
-                <div v-html="content"></div>
+                <h1>{{ article.name }}</h1>
+                <div v-html="article.content"></div>
             </article>
         </template>
     </InnerPageLayout>
@@ -17,10 +15,14 @@
 
 <script setup lang="ts">
 import InnerPageLayout from '@/Layouts/InnerPageLayout.vue';
+import SidebarNavigation from '@/Components/SidebarNavigation.vue';
+import { Article } from '@/types';
 
-defineProps({
-    name: String,
-    content: String,
-})
+interface Props {
+    article: Article;
+    navigation: Array<Article>;
+}
+
+defineProps<Props>()
 
 </script>

@@ -30,22 +30,15 @@
 <script setup lang="ts">
 import PageHeader from '@/Components/PageHeader.vue';
 import MainLayout from '@/Layouts/MainLayout.vue';
+import { Article, Category } from '@/types';
 import { Link, useForm } from '@inertiajs/vue3';
 
-interface Category {
-    name: String;
-    slug: String;
+interface Props {
+    featuredCategories: Array<Category>;
+    featuredArticles: Array<Article>;
 }
 
-interface Article {
-    name: String;
-    slug: String;
-}
-
-defineProps({
-    featuredCategories: Array<Category>,
-    featuredArticles: Array<Article>,
-})
+defineProps<Props>()
 
 const searchForm = useForm({
     keywords: ''
