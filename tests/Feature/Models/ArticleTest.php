@@ -2,6 +2,7 @@
 
 use App\Models\Article;
 use App\Models\Category;
+use App\Models\HelpfulVote;
 use App\States\Archived;
 use App\States\ArticleStatus;
 use App\States\Draft;
@@ -15,6 +16,7 @@ uses()->group('models','article');
 beforeEach(function(){
     $this->article = Article::factory()
         ->hasCategories(3)
+        ->hasVotes(3)
         ->create();
 });
 
@@ -117,7 +119,7 @@ it('has a featured property', function () {
 
 it('has global scope to sort by order', function () {
     DB::table('articles')->truncate();
-    
+
     Article::factory()
         ->count(3)
         ->sequence(
@@ -144,4 +146,10 @@ it('has global scope to sort by order', function () {
                 'Article C',
                 'Article A',
             ]);
+});
+
+it('has helpful voting', function () {
+    expect($this->article->votes)
+        ->not->toBeEmpty()
+        ->each->toBeInstanceOf(HelpfulVote::class);
 });

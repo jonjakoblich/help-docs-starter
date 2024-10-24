@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Concerns\HasHelpfulVoting;
 use App\States\ArticleStatus;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -13,7 +14,7 @@ use Spatie\ModelStates\HasStates;
 class Article extends Model
 {
     /** @use HasFactory<\Database\Factories\ArticleFactory> */
-    use HasFactory, HasStates;
+    use HasFactory, HasStates, HasHelpfulVoting;
 
     protected $attributes = [
         'order' => 10,
