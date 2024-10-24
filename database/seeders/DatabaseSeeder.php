@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\Sequence;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -25,13 +26,21 @@ class DatabaseSeeder extends Seeder
             ->featured()
             ->create();
 
+        $startingOrder = 10;
+
         Article::factory()
             ->count(5)
+            ->sequence(
+                fn(Sequence $sequence) => ['order' => $sequence->index * 10]
+            )
             ->published()
             ->create();
 
         Article::factory()
             ->count(5)
+            ->sequence(
+                fn(Sequence $sequence) => ['order' => $sequence->index * 11]
+            )
             ->published()
             ->featured()
             ->create();
