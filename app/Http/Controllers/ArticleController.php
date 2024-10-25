@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
-use App\States\Published;
+use App\Models\Category;
 use Illuminate\Support\Collection;
 use Inertia\Inertia;
 
@@ -39,7 +39,12 @@ class ArticleController extends Controller
 
     private function getNavigationItems(): Collection
     {
-        return Article::whereState('status', Published::class)->get();
+        return Category::query()
+            ->whereRelation('articles', 'status', 'published')
+            ->get()
+            ->loadMissing(['articles'])
+            ->setVisible(['name', 'articles'])
+            ->each(fn($category) => $category->articles->setVisible(['name', 'slug']));
     }
 
     private function getHelpfulMetrics(Article $article): array

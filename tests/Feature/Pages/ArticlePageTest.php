@@ -14,6 +14,7 @@ it('displays an article', function () {
 
     Article::factory()
         ->count(3)
+        ->hasCategories(1)
         ->published()
         ->sequence(
             ['order' => 5],
@@ -33,7 +34,13 @@ it('displays an article', function () {
                 ->where('updated_at', $article->updated_at->toJSON())
                 ->where('slug', $article->slug)
             )
-            ->has('navigation',3)
+            ->has('navigation', 3, fn(AssertableInertia $page) => $page
+                ->has('name')
+                ->has('articles', 1, fn(AssertableInertia $page) => $page
+                    ->has('name')
+                    ->has('slug')
+                )
+            )
             ->has('previous', fn(AssertableInertia $page) => $page
                 ->where('order',5)
                 ->has('name')
