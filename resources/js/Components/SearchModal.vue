@@ -12,18 +12,19 @@
                         type="text" 
                         class="border-0 w-full text-xl h-12 focus:ring-0"
                         placeholder="Search support docs..."
-                        @input="debounce(search,500)"
+                        @input="search"
                         autofocus
                         tabindex="0"
                     />
                 </div>
                 <div v-if="results != undefined" class="px-2 mt-2">
                     <h2 class="font-bold text-sm text-gray-500">Search Results</h2>
-                    <ul>
+                    <ul v-if="results.length > 0">
                         <li v-for="article in results" class="py-2 text-lg">
                             <Link :href="route('article.view',article.slug)" class="text-indigo-500 hover:text-indigo-700">{{ article.name }}</Link>
                         </li>
                     </ul>
+                    <p v-if="results.length == 0" class="py-2">No results could be found</p>
                 </div>
             </div>
         </div>
@@ -41,22 +42,22 @@ const emit = defineEmits(['closeModal'])
 const keywords = ref('')
 const results = ref<Array<Article>>()
 
-const debounce = (fn: Function, delay: number) => {
-    setTimeout(() => {
-        fn();
-    }, delay);
-};
-
 const search = () => {
-    axios
-        .post(route('search.retrieve'),{
-            s: keywords.value
-        })
-        .then((res) => {
-            console.log(res)
-            results.value = res.data
-        })
-        .catch((err) => console.error(err))
+    if(keywords.value == '') {
+        results.value = undefined
+    }
+
+    if(keywords.value != '') {
+        axios
+            .post(route('search.retrieve'),{
+                s: keywords.value
+            })
+            .then((res) => {
+                //console.log(res)
+                results.value = res.data
+            })
+            .catch((err) => console.error(err))
+    }
 }
 
 function maybeCloseModal(e: Event) {

@@ -45,8 +45,8 @@ import ArticleHelpfulVote from '@/Components/ArticleHelpfulVote.vue';
 interface Props {
     article: Article;
     navigation: Array<Article>;
-    previous: Article;
-    next: Article;
+    previous: Article|null;
+    next: Article|null;
     helpfulMetrics: HelpfulMetrics;
 }
 
