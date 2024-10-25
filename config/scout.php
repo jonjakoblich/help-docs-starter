@@ -174,6 +174,10 @@ return [
             'healthcheck_interval_seconds' => env('TYPESENSE_HEALTHCHECK_INTERVAL_SECONDS', 30),
             'num_retries' => env('TYPESENSE_NUM_RETRIES', 3),
             'retry_interval_seconds' => env('TYPESENSE_RETRY_INTERVAL_SECONDS', 1),
+            'highlight' => [
+                'pre_tags' => ['<b>'],
+                'post_tags' => ['</b>'],
+            ],
         ],
         // 'max_total_results' => env('TYPESENSE_MAX_TOTAL_RESULTS', 1000),
         'model-settings' => [
@@ -183,6 +187,7 @@ return [
                         [
                             'name' => 'id',
                             'type' => 'string',
+                            'index' => false,
                         ],
                         [
                             'name' => 'name',
@@ -205,5 +210,5 @@ return [
             ],
         ],
     ],
-    
+
 ];
