@@ -6,10 +6,10 @@
                 <button class="rounded-md border-2 w-24" @click="handleVote(true)">Yes</button>
                 <button class="rounded-md border-2 w-24" @click="handleVote(false)">No</button>
             </div>
-            <p v-if="form.hasErrors" v-for="error in form.errors" class="text-red-500">{{ error }}</p>
+            <p v-if="form.hasErrors" v-for="error in form.errors" class="text-error-500">{{ error }}</p>
         </div>
         <div v-if="voted">
-            <p class="text-emerald-700">Thank you for your vote!</p>
+            <p class="text-success-700">Thank you for your vote!</p>
         </div>
         <p class="text-sm">{{ metrics.foundHelpful }} out of {{ metrics.totalVotes }} people found this helpful</p>
         <p>Need more help? <Link href="#" class="text-primary-500 hover:text-primary-700">Contact us</Link></p>

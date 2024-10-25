@@ -14,6 +14,8 @@ export default {
     theme: {
         colors: {
             primary: colors.indigo,
+            success: colors.emerald,
+            error: colors.red,
             gray: colors.gray,
             white: colors.white,
             black: colors.white,
