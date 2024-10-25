@@ -11,6 +11,11 @@ class HelpfulVote extends Model
     /** @use HasFactory<\Database\Factories\HelpfulVoteFactory> */
     use HasFactory;
 
+    protected $fillable = [
+        'vote',
+        'ip_address',
+    ];
+
     public function voteable(): MorphTo
     {
         return $this->morphTo();
