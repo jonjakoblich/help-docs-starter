@@ -17,11 +17,14 @@
                         tabindex="0"
                     />
                 </div>
-                <ul id="results">
-                    <li v-for="article in results" class="p-2 text-lg">
-                        <Link :href="route('article.view',article.slug)" class="text-indigo-500 hover:text-indigo-700">{{ article.name }}</Link>
-                    </li>
-                </ul>
+                <div v-if="results != undefined" class="px-2 mt-2">
+                    <h2 class="font-bold text-sm text-gray-500">Search Results</h2>
+                    <ul>
+                        <li v-for="article in results" class="py-2 text-lg">
+                            <Link :href="route('article.view',article.slug)" class="text-indigo-500 hover:text-indigo-700">{{ article.name }}</Link>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
