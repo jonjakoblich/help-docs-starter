@@ -13,7 +13,7 @@
                 <h1>{{ article.name }}</h1>
                 <div v-html="article.content"></div>
                 <div class="flex gap-1 mt-8">
-                    Categories: <Link v-for="(category, index) in article.categories" :href="route('category.view',category.slug)" class="text-indigo-500 hover:text-indigo-700">{{ category.name }}</Link>
+                    Categories: <Link v-for="(category, index) in article.categories" :href="route('category.view',category.slug)" class="text-primary-500 hover:text-primary-700">{{ category.name }}</Link>
                 </div>
             </article>
             <ArticleHelpfulVote :metrics="helpfulMetrics" />
@@ -23,11 +23,11 @@
             >
                 <div v-if="previous != null" class="w-1/2 pr-4">
                     <p class="font-bold text-gray-500">Previous article</p>
-                    <p class="text-xl text-gray-400 hover:text-indigo-500 hover:cursor-pointer"><Link :href="route('article.view',previous.slug)">{{previous.name}}</Link></p>
+                    <p class="text-xl text-gray-400 hover:text-primary-500 hover:cursor-pointer"><Link :href="route('article.view',previous.slug)">{{previous.name}}</Link></p>
                 </div>
                 <div v-if="next != null" class="w-1/2 text-right pl-4">
                     <p class="font-bold text-gray-500 text-right">Next article</p>
-                    <p class="text-xl text-gray-400 hover:text-indigo-500 hover:cursor-pointer"><Link :href="route('article.view',next.slug)">{{next.name}}</Link></p>
+                    <p class="text-xl text-gray-400 hover:text-primary-500 hover:cursor-pointer"><Link :href="route('article.view',next.slug)">{{next.name}}</Link></p>
                 </div>
             </footer>
         </template>
