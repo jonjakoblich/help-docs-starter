@@ -37,6 +37,7 @@ class CategoryResource extends Resource
                 Forms\Components\Select::make('parent')
                     ->relationship(titleAttribute: 'name')
                     ->columnSpanFull(),
+                Forms\Components\Toggle::make('featured'),
             ]);
     }
 
@@ -49,6 +50,7 @@ class CategoryResource extends Resource
                 Tables\Columns\TextColumn::make('articles_count')
                     ->counts('articles')
                     ->label('Articles'),
+                Tables\Columns\ToggleColumn::make('featured'),
                 Tables\Columns\TextColumn::make('parent.name'),
             ])
             ->searchable('name')

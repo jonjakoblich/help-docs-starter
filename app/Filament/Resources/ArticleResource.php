@@ -45,6 +45,7 @@ class ArticleResource extends Resource
                 Forms\Components\Section::make('Publishing')
                     ->description('Settings for publishing this post.')
                     ->schema([
+                        Forms\Components\Toggle::make('featured'),
                         Forms\Components\Select::make('status')
                             ->options(Article::getStatesFor('status')
                                     ->flatMap(fn(string $state) => 
@@ -72,6 +73,7 @@ class ArticleResource extends Resource
                 Tables\Columns\TextColumn::make('name')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('categories.name'),
+                Tables\Columns\ToggleColumn::make('featured'),
                 Tables\Columns\TextColumn::make('status')
                     ->badge()
                     ->color(fn (string $state): string => match ($state) {
