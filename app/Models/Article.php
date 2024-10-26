@@ -31,6 +31,7 @@ class Article extends Model
         'content',
         'author_id',
         'slug',
+        'status',
     ];
 
     protected $with = [

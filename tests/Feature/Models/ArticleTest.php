@@ -3,6 +3,7 @@
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\HelpfulVote;
+use App\Models\User;
 use App\States\Archived;
 use App\States\ArticleStatus;
 use App\States\Draft;
@@ -153,3 +154,18 @@ it('has helpful voting', function () {
         ->not->toBeEmpty()
         ->each->toBeInstanceOf(HelpfulVote::class);
 });
+
+it('has fillable properties', function () {
+    $data = [
+        'name' => fake()->words(rand(3,5),true),
+        'content' => fake()->realText(),
+        'author_id' => 1,
+        'slug' => fake()->slug(),
+        'status' => 'published'
+    ];
+
+    $article = Article::create($data);
+
+    expect($article)->toBeInstanceOf(Article::class);
+});
+
