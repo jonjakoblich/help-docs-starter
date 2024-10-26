@@ -5,20 +5,26 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Gate;
 use Inertia\Inertia;
 
 class ArticleController extends Controller
 {
     public function __invoke(Article $article)
     {
+        $response = Gate::inspect('view', $article);
+
+        if(!$response->allowed())
+            abort(404);
+
         $navigation = $this->getNavigationItems();
 
         $previous = Article::where('order', '<', $article->order)
-            ->orderByDesc('order')
-            ->first();
+                    ->orderByDesc('order')
+                    ->first();
 
         $next = Article::where('order', '>', $article->order)
-            ->first();
+                    ->first();
 
         $helpfulMetrics = $this->getHelpfulMetrics($article);
 
@@ -41,8 +47,10 @@ class ArticleController extends Controller
     {
         return Category::query()
             ->whereRelation('articles', 'status', 'published')
+            ->with(['articles' => function ($query) {
+                $query->where('status', 'published');
+            }])
             ->get()
-            ->loadMissing(['articles'])
             ->setVisible(['name', 'articles'])
             ->each(fn($category) => $category->articles->setVisible(['name', 'slug']));
     }

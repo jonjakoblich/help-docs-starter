@@ -4,8 +4,10 @@ namespace App\Policies;
 
 use App\Models\Article;
 use App\Models\User;
+use App\States\Published;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class ArticlePolicy
 {
@@ -20,9 +22,12 @@ class ArticlePolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User|null $user, Article $article): bool
+    public function view(?User $user, Article $article): Response
     {
-        return true;
+        if(!$user?->id && $article->status::$name != Published::$name)
+            return Response::denyWithStatus(404);
+
+        return Response::allow();
     }
 
     /**

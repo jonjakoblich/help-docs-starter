@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Concerns\HasHelpfulVoting;
 use App\States\ArticleStatus;
+use App\States\Published;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -58,9 +59,14 @@ class Article extends Model
      */
     public function toSearchableArray(): array
     {
-        return array_merge($this->toArray(),[
+        $data = array_merge($this->toArray(),[
             'id' => (string) $this->id,
             'created_at' => $this->created_at->timestamp,
         ]);
+
+        if($this->status::$name != Published::$name)
+            return [];
+
+        return $data;
     }
 }
