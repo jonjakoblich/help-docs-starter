@@ -2,7 +2,7 @@
     <MainLayout>
         <PageHeader />
         <div class="flex flex-col sm:flex-row place-items-center justify-center bg-primary-600 w-full h-48">
-            <h1 class="text-white text-2xl m-3 font-bold">Answers to your questions</h1>
+            <h1 class="text-white text-2xl m-3 font-bold">Find answers to your questions</h1>
             <button 
                 type="button" 
                 class="group flex h-12 w-72 rounded-md items-center justify-center sm:justify-start md:h-auto md:w-80 md:flex-none md:rounded-lg md:py-2.5 md:pl-4 md:pr-3.5 md:text-sm md:ring-1 md:ring-gray-200 md:hover:ring-gray-300 lg:w-96 bg-white"
