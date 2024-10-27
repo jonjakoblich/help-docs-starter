@@ -71,7 +71,8 @@ class ArticleResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->sortable(),
+                    ->sortable()
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('categories.name'),
                 Tables\Columns\ToggleColumn::make('featured'),
                 Tables\Columns\TextColumn::make('status')
@@ -88,8 +89,7 @@ class ArticleResource extends Resource
                     ->sortable(),
             ])
             ->reorderable('order')
-            ->defaultSort('created_at')
-            ->searchable('name')
+            ->defaultSort('name')
             ->persistSearchInSession()
             ->filters([
                 //
