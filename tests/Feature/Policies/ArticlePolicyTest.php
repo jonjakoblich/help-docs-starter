@@ -10,7 +10,7 @@ use function Pest\Laravel\actingAs;
 uses()->group('policies','article');
 
 beforeEach(function(){
-    $this->article = Article::factory()->create();
+    $this->article = Article::factory()->published()->create();
 });
 
 describe('logged in users',function(){

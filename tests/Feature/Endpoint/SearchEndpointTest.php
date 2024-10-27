@@ -31,7 +31,7 @@ it('returns highlight data', function () {
 })->skip('Requires data from scoutMetadata. Pending PR https://github.com/laravel/scout/pull/868');
 
 it('shows only published posts', function () {
-    $article = Article::factory()->create();
+    $article = Article::factory()->state(['name' => 'XyzJJJXyz'])->create();
 
     $data = [
         's' => $article->name,

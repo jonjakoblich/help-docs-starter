@@ -4,6 +4,8 @@ use App\Models\Article;
 use App\Models\HelpfulVote;
 use Illuminate\Database\Eloquent\Model;
 
+uses()->group('models','helpful-votes');
+
 beforeEach(function(){
     $this->vote = HelpfulVote::factory()
         ->for(Article::factory(), 'voteable')

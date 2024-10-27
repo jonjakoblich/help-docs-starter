@@ -3,7 +3,6 @@
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\HelpfulVote;
-use App\Models\User;
 use App\States\Archived;
 use App\States\ArticleStatus;
 use App\States\Draft;
@@ -78,7 +77,7 @@ it('can transition from draft to any other status', function () {
         ->canTransitionTo(Published::class)->toBeTrue()
         ->canTransitionTo(Archived::class)->toBeTrue()
         ->canTransitionTo(Hidden::class)->toBeTrue();
-})->skip('Waiting on PR265 in spatie/laravel-model-states');
+});
 
 it('can transition from published to any other status', function () {
     $this->article->status->transitionTo(Published::class);
@@ -87,7 +86,7 @@ it('can transition from published to any other status', function () {
         ->canTransitionTo(Draft::class)->toBeTrue()
         ->canTransitionTo(Archived::class)->toBeTrue()
         ->canTransitionTo(Hidden::class)->toBeTrue();
-})->skip('Waiting on PR265 in spatie/laravel-model-states');
+});
 
 it('can transition from archived to any other status', function () {
     $this->article->status->transitionTo(Archived::class);
@@ -96,7 +95,7 @@ it('can transition from archived to any other status', function () {
         ->canTransitionTo(Draft::class)->toBeTrue()
         ->canTransitionTo(Published::class)->toBeTrue()
         ->canTransitionTo(Hidden::class)->toBeTrue();
-})->skip('Waiting on PR265 in spatie/laravel-model-states');
+});
 
 it('can transition from hidden to any other status', function () {
     $this->article->status->transitionTo(Hidden::class);
@@ -105,7 +104,7 @@ it('can transition from hidden to any other status', function () {
         ->canTransitionTo(Draft::class)->toBeTrue()
         ->canTransitionTo(Archived::class)->toBeTrue()
         ->canTransitionTo(Published::class)->toBeTrue();
-})->skip('Waiting on PR265 in spatie/laravel-model-states');
+});
 
 it('has an order property which defaults to 10', function () {
     expect($this->article)->order
@@ -168,4 +167,3 @@ it('has fillable properties', function () {
 
     expect($article)->toBeInstanceOf(Article::class);
 });
-
