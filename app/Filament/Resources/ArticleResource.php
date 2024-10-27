@@ -78,10 +78,10 @@ class ArticleResource extends Resource
                 Tables\Columns\TextColumn::make('status')
                     ->badge()
                     ->color(fn (string $state): string => match ($state) {
-                        'draft' => 'gray',
                         'archived' => 'blue',
                         'published' => 'success',
                         'private' => 'danger',
+                        default => 'gray',
                     })
                     ->formatStateUsing(fn(string $state) => Str::upper($state)),
                 Tables\Columns\TextColumn::make('created_at')

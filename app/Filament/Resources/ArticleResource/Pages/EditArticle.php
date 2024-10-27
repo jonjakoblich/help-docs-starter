@@ -26,8 +26,8 @@ class EditArticle extends EditRecord
     {
         $record->update(Arr::except($data,'status'));
 
-        if($record->status->canTransitionTo($data['status']))
-            $record->status->transitionTo($data['status']);
+        if($record->status->canTransitionTo($data['status'])) // @phpstan-ignore property.notFound
+            $record->status->transitionTo($data['status']); // @phpstan-ignore property.notFound
 
         return $record;
     }

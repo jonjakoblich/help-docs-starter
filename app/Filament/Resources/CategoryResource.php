@@ -46,14 +46,14 @@ class CategoryResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->sortable(),
+                    ->sortable()
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('articles_count')
                     ->counts('articles')
                     ->label('Articles'),
                 Tables\Columns\ToggleColumn::make('featured'),
                 Tables\Columns\TextColumn::make('parent.name'),
             ])
-            ->searchable('name')
             ->persistSearchInSession()
             ->filters([
                 //

@@ -11,8 +11,8 @@ class StatsOverview extends BaseWidget
     protected function getStats(): array
     {
         return [
-            Stat::make('Published Articles', Article::where('status','published')->count()),
-            Stat::make('Draft Articles', Article::where('status','draft')->count()),
+            Stat::make('Published Articles', Article::query()->where('status','published')->count()),
+            Stat::make('Draft Articles', Article::query()->where('status','draft')->count()),
         ];
     }
 }

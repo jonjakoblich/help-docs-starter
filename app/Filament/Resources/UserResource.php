@@ -36,10 +36,10 @@ class UserResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->sortable(),
+                    ->sortable()
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('email'),
             ])
-            ->searchable('name')
             ->persistSearchInSession()
             ->filters([
                 //
