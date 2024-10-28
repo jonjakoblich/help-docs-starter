@@ -5,7 +5,7 @@
         </template>
         <template #content>
             <article class="prose max-w-full">
-                <p>Updated: {{ new Date(article.updated_at).toLocaleDateString('en-US',{
+                <p>Updated: {{ new Date(article.updated_at ?? 'now').toLocaleDateString('en-US',{
                     year: 'numeric',
                     month: 'long',
                     day: 'numeric',

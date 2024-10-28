@@ -61,7 +61,8 @@ const search = () => {
 }
 
 function maybeCloseModal(e: Event) {
-    if(!e.target?.closest('#searchModal')) {
+    const target = e.target as Element
+    if(!target.closest('#searchModal')) {
         emit('closeModal')
     }
 }
