@@ -22,7 +22,7 @@ class ArticleFactory extends Factory
         $name = fake()->words(rand(2,5),true);
 
         return [
-            'name' => $name,
+            'name' => Str::title($name),
             'content' => fake()->realText(500),
             'author_id' => User::factory(),
             'slug' => Str::slug($name),

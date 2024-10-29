@@ -20,7 +20,7 @@ class CategoryFactory extends Factory
         $name = fake()->word();
 
         return [
-            'name' => $name,
+            'name' => Str::title($name),
             'slug' => Str::slug($name),
         ];
     }
