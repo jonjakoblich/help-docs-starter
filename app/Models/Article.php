@@ -25,6 +25,7 @@ class Article extends Model
 
     protected $casts = [
         'status' => ArticleStatus::class,
+        //'featured' => 'boolean',
     ];
 
     protected $fillable = [
@@ -33,6 +34,7 @@ class Article extends Model
         'author_id',
         'slug',
         'status',
+        'featured',
     ];
 
     protected $with = [
