@@ -20,8 +20,9 @@
             </Teleport>
         </div>
         <div 
-            class="grid px-4 sm:px-0 grid-cols-2 sm:grid-cols-3 gap-4 my-6"
-            :class="{'sm:grid-cols-2': featuredCategories.length == 2, 'sm:grid-cols-1': featuredCategories.length == 1,}"
+            v-if="featuredCategories.length > 0"
+            class="grid px-4 sm:px-0 gap-4 my-6"
+            :class="{'sm:grid-cols-3': featuredCategories.length >= 3, 'sm:grid-cols-2': featuredCategories.length == 2, 'sm:grid-cols-1': featuredCategories.length == 1,}"
         >
             <!-- Featured Categories -->
             <Link v-for="category in featuredCategories"  :href="route('category.view',category.slug)" class="hover:cursor-pointer">
