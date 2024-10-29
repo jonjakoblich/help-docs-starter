@@ -1,10 +1,13 @@
 {
+    "name": "help-docs-starter",
     "private": true,
     "type": "module",
     "scripts": {
         "dev": "vite",
         "build": "vue-tsc && vite build && vite build --ssr"
     },
+    "author": "Jon Jakoblich",
+    "license": "MIT",
     "devDependencies": {
         "@inertiajs/vue3": "^1.2.0",
         "@tailwindcss/forms": "^0.5.3",

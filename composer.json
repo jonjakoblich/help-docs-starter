@@ -1,9 +1,15 @@
 {
     "name": "jonjakoblich/help-docs-starter",
     "type": "project",
-    "description": "A simple help documentation starter kit site for SaaS apps.",
-    "keywords": ["laravel", "framework"],
+    "description": "A simple help documentation starter kit site for products of all types.",
+    "keywords": ["laravel", "vue", "typesense", "support"],
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Jon Jakoblich",
+            "email": "jonj@kobli.ch"
+        }
+    ],
     "require": {
         "php": "^8.2",
         "filament/filament": "^3.2",
