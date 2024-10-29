@@ -29,7 +29,7 @@
                 </p>
             </Link>
         </div>
-         <div class="px-4 sm:px-0">
+         <div class="px-4 sm:px-0" v-if="featuredArticles.length > 0">
              <!-- Featured Articles -->
             <h2 class="text-xl">Promoted articles</h2>
             <ul class="text-lg columns-2 sm:columns-3 gap-8 my-4">
