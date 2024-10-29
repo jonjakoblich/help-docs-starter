@@ -1,5 +1,5 @@
 <template>
-    <Link href="#">Product homepage</Link>
+    <Link href="#" class="text-primary-500 hover:text-primary-700">Product homepage</Link>
 </template>
 
 <script setup lang="ts">
