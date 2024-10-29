@@ -41,12 +41,23 @@ The admin panel is built using [Filament PHP](https://filamentphp.com), so all t
 
 ## Getting Started
 
-1. Copy this repository
+1. Clone this repository locally
+1. [Install Typesense](https://typesense.org/docs/guide/install-typesense.html#option-2-local-machine-self-hosting)
+   1. Run Typesense
 1. Run the following commands to install all dependencies and start the app
 
 ```Bash
 composer install
 npm install
+php artisan key:generate
+```
+
+Copy the .env.example file and rename the copy to .env to set up your environment file.
+
+Then run the following commands.
+
+```Bash
+php artisan migrate
 php artisan serve
 npm run dev
 ```
