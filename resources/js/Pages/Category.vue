@@ -1,4 +1,5 @@
 <template>
+    <Head :title="name + ' Category'"></Head>
     <InnerPageLayout>
         <template #content>
             <article class="prose max-w-full">
@@ -17,7 +18,7 @@
 <script setup lang="ts">
 import InnerPageLayout from '@/Layouts/InnerPageLayout.vue';
 import { Category } from '@/types';
-import { Link } from '@inertiajs/vue3';
+import { Head, Link } from '@inertiajs/vue3';
 
 defineProps<Category>()
 </script>

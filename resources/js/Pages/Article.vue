@@ -1,4 +1,5 @@
 <template>
+    <Head :title="article.name"></Head>
     <InnerPageLayout>
         <template #navigation>
             <SidebarNavigation :navigation="navigation" />
@@ -39,7 +40,7 @@
 import InnerPageLayout from '@/Layouts/InnerPageLayout.vue';
 import SidebarNavigation from '@/Components/SidebarNavigation.vue';
 import { Article, HelpfulMetrics } from '@/types';
-import { Link } from '@inertiajs/vue3';
+import { Head, Link } from '@inertiajs/vue3';
 import ArticleHelpfulVote from '@/Components/ArticleHelpfulVote.vue';
 
 interface Props {

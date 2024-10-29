@@ -1,4 +1,5 @@
 <template>
+    <Head title="Home"></Head>
     <MainLayout>
         <PageHeader />
         <div class="flex flex-col sm:flex-row place-items-center justify-center bg-primary-600 w-full h-48">
@@ -47,7 +48,7 @@ import PageHeader from '@/Components/PageHeader.vue';
 import SearchModal from '@/Components/SearchModal.vue';
 import MainLayout from '@/Layouts/MainLayout.vue';
 import { Article, Category } from '@/types';
-import { Link } from '@inertiajs/vue3';
+import { Head, Link } from '@inertiajs/vue3';
 import { ref } from 'vue';
 
 interface Props {
