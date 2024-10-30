@@ -27,6 +27,9 @@ class StatsOverview extends BaseWidget
         
         $helpfulVotes = $allVotes->where('vote', true)->count();
 
+        if($totalVotes == 0)
+            return 0;
+
         return $helpfulVotes/$totalVotes*100;
     }
 }
