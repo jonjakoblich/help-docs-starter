@@ -28,3 +28,32 @@ it('displays a category with listing of published articles', function () {
             ->where('slug', $category->slug)
         );
 });
+
+it('displays child categories and their articles', function () {
+    $category = Category::factory()
+        ->has(Article::factory()
+            ->count(2)
+            ->published()
+        )
+        ->has(Category::factory()
+            ->has(Article::factory()
+                ->count(3)
+                ->published()
+            )
+            , 'children'
+        )
+        ->create();
+
+    get(route('category.view', $category->slug))
+        ->assertOk()
+        ->assertInertia(fn(AssertableInertia $page) => $page
+            ->has('children', 1, fn(AssertableInertia $page) => $page
+                ->has('articles', 3, fn(AssertableInertia $page) => $page
+                    ->has('name')
+                    ->has('slug')
+                    ->has('order')
+                )
+                ->has('name')
+            )
+        );
+});

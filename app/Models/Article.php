@@ -25,7 +25,6 @@ class Article extends Model
 
     protected $casts = [
         'status' => ArticleStatus::class,
-        //'featured' => 'boolean',
     ];
 
     protected $fillable = [

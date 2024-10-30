@@ -12,6 +12,7 @@ export interface Category {
     slug: string;
     featured?: boolean;
     articles?: Array<Article>;
+    children?: Array<Category>;
 }
 
 export interface Article {
