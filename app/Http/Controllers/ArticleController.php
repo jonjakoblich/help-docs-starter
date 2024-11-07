@@ -51,7 +51,7 @@ class ArticleController extends Controller
                 $query->where('status', 'published');
             }])
             ->get()
-            ->setVisible(['name', 'articles'])
+            ->setVisible(['name', 'slug', 'articles'])
             ->each(fn($category) => $category->articles->setVisible(['name', 'slug']));
     }
 
