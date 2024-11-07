@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionsHandler;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use Inertia\Inertia;
 use Throwable;
@@ -12,7 +13,7 @@ class Handler extends ExceptionsHandler
     /**
      * Render the exception as an HTTP response.
      */
-    public function render($request, Throwable $e): Response
+    public function render($request, Throwable $e): Response|RedirectResponse
     {
         $response = parent::render($request, $e);
         $status = $response->status();
