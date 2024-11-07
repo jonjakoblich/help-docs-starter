@@ -7,9 +7,10 @@ use App\Filament\Resources\ArticleResource\RelationManagers;
 use App\Models\Article;
 use App\Models\Category;
 use Filament\Forms;
-use Filament\Forms\{Form, Set};
+use Filament\Forms\{Form, Get, Set};
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -32,8 +33,16 @@ class ArticleResource extends Resource
                             ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))
                             ->live(onBlur: true)
                             ->required(),
+                        Forms\Components\Toggle::make('show_rawHtml')
+                            ->label('Show Raw HTML')
+                            ->live(),
                         Forms\Components\RichEditor::make('content')
-                        ->required(),
+                            ->required()
+                            ->visible(fn (Get $get) => !$get('show_rawHtml')),
+                        Forms\Components\Textarea::make('content')
+                            ->required()
+                            ->autosize()
+                            ->visible(fn (Get $get) => $get('show_rawHtml')),
                         Forms\Components\TextInput::make('slug')
                             ->extraInputAttributes([
                                 'tabindex' => -1
@@ -92,7 +101,9 @@ class ArticleResource extends Resource
             ->defaultSort('name')
             ->persistSearchInSession()
             ->filters([
-                //
+                SelectFilter::make('category')
+                    ->relationship('categories','name')
+                    ->preload(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
