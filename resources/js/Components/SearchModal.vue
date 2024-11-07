@@ -9,11 +9,11 @@
                     </svg>
                     <input
                         v-model="keywords"
+                        id="searchbox"
                         type="text" 
                         class="border-0 w-full text-xl h-12 focus:ring-0"
                         placeholder="Search support docs..."
                         @input="search"
-                        autofocus
                         tabindex="0"
                     />
                 </div>
@@ -35,7 +35,7 @@
 import { Article } from '@/types';
 import { Link } from '@inertiajs/vue3';
 import axios from 'axios';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 
 const emit = defineEmits(['closeModal'])
 
@@ -66,4 +66,8 @@ function maybeCloseModal(e: Event) {
         emit('closeModal')
     }
 }
+
+onMounted(() => {
+    document.getElementById('searchbox')?.focus()
+})
 </script>
