@@ -2,7 +2,7 @@
     <Head :title="name + ' Category'"></Head>
     <InnerPageLayout>
         <template #content>
-            <article class="prose prose-lg max-w-full prose-a:text-blue-500 prose-a:no-underline hover:prose-a:text-blue-700 hover:prose-a:underline mx-24">
+            <article class="prose prose-lg max-w-full prose-a:text-primary-500 prose-a:no-underline hover:prose-a:text-primary-700 hover:prose-a:underline mx-24">
                 <h1>{{ name }}</h1>
                 <section class="columns-2 gap-8">
                     <ul class="list-none pl-0 my-0" v-if="articles && articles.length > 0">
