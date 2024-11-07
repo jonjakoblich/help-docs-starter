@@ -175,11 +175,11 @@ return [
             'num_retries' => env('TYPESENSE_NUM_RETRIES', 3),
             'retry_interval_seconds' => env('TYPESENSE_RETRY_INTERVAL_SECONDS', 1),
             'highlight' => [
-                'pre_tags' => ['<b>'],
-                'post_tags' => ['</b>'],
+                'pre_tags' => ['<strong>'],
+                'post_tags' => ['</strong>'],
             ],
         ],
-        // 'max_total_results' => env('TYPESENSE_MAX_TOTAL_RESULTS', 1000),
+        'max_total_results' => env('TYPESENSE_MAX_TOTAL_RESULTS', 10),
         'model-settings' => [
             Article::class => [
                 'collection-schema' => [
@@ -201,11 +201,23 @@ return [
                             'name' => 'created_at',
                             'type' => 'int64',
                         ],
+                        [
+                            'name' => 'embedding',
+                            'type' => 'float[]',
+                            'embed' => [
+                                'from' => ['name', 'content'],
+                                'model_config' => ['model_name' => 'ts/all-MiniLM-L12-v2'],
+                            ],
+                        ]
                     ],
                     'default_sorting_field' => 'created_at',
                 ],
                 'search-parameters' => [
-                    'query_by' => 'name, content'
+                    'query_by' => 'embedding',
+                    'vector_query' => 'embedding([],k: 200)',
+                    'exclude_fields' => 'embedding',
+                    'per_page' => 10,
+                    'page' => 1,
                 ],
             ],
         ],
