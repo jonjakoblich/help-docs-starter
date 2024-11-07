@@ -12,7 +12,7 @@
             <p class="text-success-700">Thank you for your vote!</p>
         </div>
         <p class="text-sm">{{ metrics.foundHelpful }} out of {{ metrics.totalVotes }} people found this helpful</p>
-        <p>Need more help? <Link href="#" class="text-primary-500 hover:text-primary-700">Contact us</Link></p>
+        <p>Need more help? <a href="#" class="text-primary-500 hover:text-primary-700">Contact us</a></p>
     </section>
 </template>
 
