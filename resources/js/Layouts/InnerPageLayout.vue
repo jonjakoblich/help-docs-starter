@@ -6,7 +6,7 @@
                 <!-- Left column with navigation to pages -->
                  <slot name="navigation"></slot>
             </div>
-            <div class="p-8" :class="{'w-full': $slots.navigation === null, 'w-3/4': $slots.navigation !== null}">
+            <div class="p-8" :class="{'w-full': $slots.navigation === undefined, 'w-3/4': $slots.navigation !== undefined}">
                 <!-- Right column with content -->
                  <slot name="content"></slot>
             </div>

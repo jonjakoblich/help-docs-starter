@@ -25,7 +25,7 @@
             :class="{'sm:grid-cols-3': featuredCategories.length >= 3, 'sm:grid-cols-2': featuredCategories.length == 2, 'sm:grid-cols-1': featuredCategories.length == 1,}"
         >
             <!-- Featured Categories -->
-            <Link v-for="category in featuredCategories"  :href="route('category.view',category.slug)" class="hover:cursor-pointer">
+            <Link v-for="category in featuredCategories"  :href="route('category.view',category.slug)" class="hover:cursor-pointer" :key="category.slug">
                 <p class="border-primary-400 border-2 rounded-md text-center text-primary-500 text-xl p-4 hover:text-primary-700 hover:border-primary-700">
                     {{ category.name }}
                 </p>
@@ -35,7 +35,7 @@
              <!-- Featured Articles -->
             <h2 class="text-xl">Promoted articles</h2>
             <ul class="text-lg columns-2 sm:columns-3 gap-8 my-4">
-                <li v-for="article in featuredArticles" class="leading-loose py-4 border-b-[1px] ">
+                <li v-for="article in featuredArticles" class="py-4 first:pt-0 border-b-[1px] break-inside-avoid" :key="article.slug">
                     <Link :href="route('article.view',article.slug)" class="text-primary-500 hover:text-primary-700">{{ article.name }}</Link>
                 </li>
             </ul>

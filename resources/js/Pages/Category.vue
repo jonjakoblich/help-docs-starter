@@ -2,22 +2,26 @@
     <Head :title="name + ' Category'"></Head>
     <InnerPageLayout>
         <template #content>
-            <article class="prose max-w-full columns-2">
+            <article class="prose prose-lg max-w-full prose-a:text-blue-500 prose-a:no-underline hover:prose-a:text-blue-700 hover:prose-a:underline mx-24">
                 <h1>{{ name }}</h1>
-                <ul class="break-inside-avoid">
-                    <li v-for="article in articles">
-                        <Link :href="route('article.view',article.slug)">{{ article.name }}</Link>
-                    </li>
-                </ul>
-                <div v-for="child in children">
-                    <div v-if="child.articles !== undefined && child.articles.length > 0">
-                        <h2>{{ child.name }}</h2>
-                        <ul class="break-inside-avoid">
-                            <li v-for="article in child.articles">
-                                <Link :href="route('article.view',article.slug)">{{ article.name }}</Link>
-                            </li>
-                        </ul>
-                    </div>
+                <section class="columns-2 gap-8">
+                    <ul class="list-none pl-0 my-0" v-if="articles && articles.length > 0">
+                        <li v-for="article in articles" :key="article.slug" class="leading-tight py-2 first:pt-0 last:pb-0 break-inside-avoid">
+                            <Link :href="route('article.view',article.slug)">{{ article.name }}</Link>
+                        </li>
+                    </ul>
+                </section>
+                <div class="columns-1 sm:columns-auto gap-8">
+                    <section v-for="child in children" class="break-inside-avoid grow w-full block">
+                        <div v-if="child.articles !== undefined && child.articles.length > 0" class="flex flex-col">
+                            <h2>{{ child.name }}</h2>
+                            <ul class="list-none pl-0">
+                                <li v-for="article in child.articles" :key="article.slug">
+                                    <Link :href="route('article.view',article.slug)">{{ article.name }}</Link>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
                 </div>
             </article>
         </template>
