@@ -9,7 +9,9 @@ class ArticleSearchController extends Controller
 {
     public function __invoke(ArticleSearchRequest $request): string
     {
-        $results = Article::search($request->validated('s'))->get();
+        $results = Article::search($request->validated('s'))
+                    ->get()
+                    ->select('name','slug');
 
         /**
          * @todo Add the Scout metadata to each $results member object to return to the frontend.

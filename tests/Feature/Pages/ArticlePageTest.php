@@ -40,6 +40,7 @@ describe('for guest users', function() {
                 )
                 ->has('navigation', 5, fn(AssertableInertia $page) => $page
                     ->has('name')
+                    ->has('slug')
                     ->has('articles', 1, fn(AssertableInertia $page) => $page
                         ->has('name')
                         ->has('slug')
@@ -121,6 +122,7 @@ test('the side navigation displays only published articles', function () {
             ->assertInertia(fn(AssertableInertia $page) => $page
                 ->has('navigation', 1, fn(AssertableInertia $page) => $page
                 ->has('name')
+                ->has('slug')
                 ->has('articles', 1)
             )
         );

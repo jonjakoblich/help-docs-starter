@@ -1,7 +1,7 @@
 <?php
 
 use App\Models\Article;
-use App\States\Draft;
+use App\States\Published;
 use Database\Seeders\DatabaseSeeder;
 
 use function Pest\Laravel\post;
@@ -16,12 +16,10 @@ beforeEach(function(){
 });
 
 it('returns search results in JSON', function () {
-    $results = post(route('search.retrieve'), $this->data)
+    post(route('search.retrieve'), $this->data)
         ->assertSessionHasNoErrors()
         ->assertOk()
         ->assertJsonIsArray();
-
-    //dd($results->json());
 });
 
 it('returns highlight data', function () {
@@ -40,5 +38,14 @@ it('shows only published posts', function () {
     post(route('search.retrieve'), $data)
         ->assertSessionHasNoErrors()
         ->assertOk()
-        ->assertExactJson([]);
+        ->assertSimilarJson(
+            Article::whereState('status',Published::class)
+                ->get()
+                ->select('name','slug')
+                ->toArray()
+        )
+        ->assertJsonMissingExact([
+            'name' => $article->name,
+            'slug' => $article->slug,
+        ]);
 });
