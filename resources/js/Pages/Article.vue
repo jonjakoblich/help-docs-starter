@@ -54,3 +54,9 @@ interface Props {
 defineProps<Props>()
 
 </script>
+
+<style lang="css">
+figcaption {
+    display: none;
+}
+</style>
